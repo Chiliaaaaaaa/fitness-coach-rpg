@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fitness RPG</title>
+</head>
+<body style="font-family: sans-serif; padding:20px; background:#f5f5f5;">
+
+<h1>🏋️ Fitness RPG</h1>
+<p>马甲线养成计划</p>
+
+<h3>今日任务</h3>
+<label><input type="checkbox" onclick="calc()"> 无氧训练</label><br>
+<label><input type="checkbox" onclick="calc()"> 爬坡</label><br>
+<label><input type="checkbox" onclick="calc()"> 控制饮食</label><br>
+
+<h3>XP</h3>
+<p id="xp">0</p>
+
+<textarea id="note" placeholder="今天状态..." style="width:100%;height:100px;"></textarea>
+<button onclick="save()">保存</button>
+
+<script>
+function calc() {
+  let xp = 0;
+  document.querySelectorAll("input").forEach(i => {
+    if(i.checked) xp += 10;
+  });
+  document.getElementById("xp").innerText = xp;
+}
+
+function save(){
+  localStorage.setItem("log", document.getElementById("note").value);
+  alert("已保存");
+}
+</script>
+
+</body>
+</html>
